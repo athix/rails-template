@@ -1,0 +1,5 @@
+en:
+  views:
+    layouts:
+      title: '<%= app_name.titleize %>'
+      description: 'Description coming soon...'

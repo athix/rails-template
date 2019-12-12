@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <%% if ENV['<%= app_name.underscore.upcase %>_DATABASE_USERNAME'].present? %>
+  username: <%%= ENV['<%= app_name.underscore.upcase %>_DATABASE_USERNAME'] %>
+  <%% end %>
+  <%% if ENV['<%= app_name.underscore.upcase %>_DATABASE_HOST'].present? %>
+  host: <%%= ENV['<%= app_name.underscore.upcase %>_DATABASE_HOST'] %>
+  <%% end %>
+
+development:
+  <<: *default
+  database: <%= app_name.underscore.downcase %>_development
+
+test:
+  <<: *default
+  database: <%= app_name.underscore.downcase %>_test
+
+production:
+  <<: *default
+  database: <%= app_name.underscore.downcase %>_production
+  username: <%= app_name.underscore.downcase %>
+  password: <%%= ENV['<%= app_name.underscore.upcase %>_DATABASE_PASSWORD'] %>
