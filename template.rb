@@ -11,10 +11,6 @@ require 'shellwords'
 # PrettyPrint
 require 'pp'
 
-# REMOVE WHEN DONE DEBUGGING
-# Interactive console
-require 'byebug'
-
 ###############
 ## Constants ##
 ###############
@@ -72,6 +68,7 @@ def apply_template!
   apply 'app/template.rb'
   apply 'config/template.rb'
   apply 'lib/template.rb'
+  apply 'spec/template.rb'
 
   ########################################
   ## Runs after bundle and yarn install ##
